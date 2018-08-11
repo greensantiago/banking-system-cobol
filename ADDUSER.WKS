@@ -1,0 +1,5 @@
+       01 WS-USERID PIC X(15).
+       01 WS-PASSWORD PIC X(15).
+       01 WS-LNAME PIC X(15).
+       01 WS-FNAME PIC X(15).
+       01 WS-MNAME PIC X(15).

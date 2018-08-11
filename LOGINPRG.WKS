@@ -1,0 +1,2 @@
+       01 WS-USER-ID PIC X(15).
+       01 WS-USER-PASS PIC X(15).

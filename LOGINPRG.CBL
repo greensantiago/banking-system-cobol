@@ -1,0 +1,11 @@
+       IDENTIFICATION DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       COPY "LOGINPRG.wks".
+       SCREEN SECTION.
+       COPY "LOGINPRG.ss".
+       PROCEDURE DIVISION.
+           DISPLAY G-LOGINPRG.
+           ACCEPT G-LOGINPRG.
+           STOP RUN.
+      
