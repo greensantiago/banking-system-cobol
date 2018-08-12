@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. ADDUSER.
+       PROGRAM-ID. ADDUSER IS INITIAL.
        AUTHOR. AGATHA BACANI.
        DATE-WRITTEN. 08 08 2018.
       ****************************************************************
@@ -30,7 +30,7 @@
        01 EXIT-SW                   PIC X VALUE 'N'.
        01 DUMMY                     PIC X VALUE SPACES.
        01 SAVE-SW                   PIC X VALUE 'Y'.
-       COPY APLHA.
+       COPY ALPHA2.
       *****************************************************************
        SCREEN SECTION.
        COPY "ADDUSER.ss".
@@ -50,6 +50,7 @@
       *****************************************************************
        A500-PROCESS-RTN.
            ACCEPT G-USER-ID.
+           INSPECT WS-USERID CONVERTING LOWERCASE TO UPPERCASE.
            MOVE WS-USERID TO USER-ID.
            READ USER-FILE
               INVALID KEY
@@ -60,7 +61,7 @@
                 DISPLAY 'DO YOU WANT TO EXIT? Y/N: '
                         LINE 23 COL 2 ERASE EOL
                 ACCEPT EXIT-SW LINE 23
-                INSPECT EXIT-SW CONVERTING ALPHALOWER TO ALPHAUPPER
+                INSPECT EXIT-SW CONVERTING LOWERCASE TO UPPERCASE
                 IF EXIT-SW = 'N'
                    PERFORM 900-CLEAR-FIELDS-RTN
                 END-IF
@@ -69,28 +70,29 @@
        100-ACCEPT-OTHER-FIELDS.
            ACCEPT G-USER-PASSWORD.
            INSPECT WS-PASSWORD
-                   CONVERTING ALPHALOWER TO ALPHAUPPER.
+                   CONVERTING LOWERCASE TO UPPERCASE.
+           INSPECT WS-PASSWORD
+                   CONVERTING UPPERCASE TO ENCRYPT-ALPHA.
            ACCEPT G-USER-LNAME.
            INSPECT WS-LNAME
-                   CONVERTING ALPHALOWER TO ALPHAUPPER.
+                   CONVERTING LOWERCASE TO UPPERCASE.
            ACCEPT G-USER-FNAME.
            INSPECT WS-FNAME
-                   CONVERTING ALPHALOWER TO ALPHAUPPER.
+                   CONVERTING LOWERCASE TO UPPERCASE.
            ACCEPT G-USER-MNAME.
            INSPECT WS-MNAME
-                   CONVERTING ALPHALOWER TO ALPHAUPPER.
+                   CONVERTING LOWERCASE TO UPPERCASE.
            MOVE WS-PASSWORD TO USER-PASSWORD.
            MOVE WS-LNAME TO USER-LNAME. 
            MOVE WS-FNAME TO USER-FNAME.
            MOVE WS-MNAME TO USER-MNAME.
-           MOVE 0 TO RECORD-LOCK.
+           MOVE 1 TO RECORD-LOCK.
            MOVE 0 TO USER-PASSWORD-ATTEMPT.
-           DISPLAY WALLPAPER.
            DISPLAY 'SAVE NEW USER CREDENTIALS? Y/N: '
-                    LINE 21 COL 2 ERASE EOL.
-           ACCEPT SAVE-SW LINE 21.
+                    LINE 22 COL 2 ERASE EOL.
+           ACCEPT SAVE-SW LINE 22.
            INSPECT SAVE-SW
-                   CONVERTING ALPHALOWER TO ALPHAUPPER.
+                   CONVERTING LOWERCASE TO UPPERCASE.
            IF SAVE-SW='Y'
                WRITE USER-REC
                  INVALID KEY
@@ -104,12 +106,13 @@
            DISPLAY 'DO YOU WANT TO EXIT? Y/N: '
                     LINE 23 COL 2 ERASE EOL.
            ACCEPT EXIT-SW LINE 23.
-           INSPECT EXIT-SW CONVERTING ALPHALOWER TO ALPHAUPPER.
+           INSPECT EXIT-SW CONVERTING LOWERCASE TO UPPERCASE.
            IF EXIT-SW = 'N'
               PERFORM 900-CLEAR-FIELDS-RTN
            END-IF.
       *****************************************************************
        900-CLEAR-FIELDS-RTN.
+           DISPLAY ' ' LINE 21 COL 1 ERASE EOL.
            DISPLAY ' ' LINE 22 COL 1 ERASE EOL.
            DISPLAY ' ' LINE 23 COL 1 ERASE EOL.
            DISPLAY ' ' LINE 24 COL 1 ERASE EOL.
