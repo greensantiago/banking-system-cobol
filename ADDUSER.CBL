@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. ADDUSER.
+       PROGRAM-ID. ADDUSER IS INITIAL.
        AUTHOR. AGATHA BACANI.
        DATE-WRITTEN. 08 08 2018.
       ****************************************************************
@@ -50,6 +50,7 @@
       *****************************************************************
        A500-PROCESS-RTN.
            ACCEPT G-USER-ID.
+           INSPECT WS-USERID CONVERTING ALPHALOWER TO ALPHAUPPER.
            MOVE WS-USERID TO USER-ID.
            READ USER-FILE
               INVALID KEY
@@ -85,10 +86,9 @@
            MOVE WS-MNAME TO USER-MNAME.
            MOVE 0 TO RECORD-LOCK.
            MOVE 0 TO USER-PASSWORD-ATTEMPT.
-           DISPLAY WALLPAPER.
            DISPLAY 'SAVE NEW USER CREDENTIALS? Y/N: '
-                    LINE 21 COL 2 ERASE EOL.
-           ACCEPT SAVE-SW LINE 21.
+                    LINE 22 COL 2 ERASE EOL.
+           ACCEPT SAVE-SW LINE 22.
            INSPECT SAVE-SW
                    CONVERTING ALPHALOWER TO ALPHAUPPER.
            IF SAVE-SW='Y'
@@ -110,6 +110,7 @@
            END-IF.
       *****************************************************************
        900-CLEAR-FIELDS-RTN.
+           DISPLAY ' ' LINE 21 COL 1 ERASE EOL.
            DISPLAY ' ' LINE 22 COL 1 ERASE EOL.
            DISPLAY ' ' LINE 23 COL 1 ERASE EOL.
            DISPLAY ' ' LINE 24 COL 1 ERASE EOL.
