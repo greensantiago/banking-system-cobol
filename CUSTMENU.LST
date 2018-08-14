@@ -1,0 +1,24 @@
+* Micro Focus COBOL Version 3.0.22   L2.4 revision 001 11-Aug-18 12:26 Page   1
+*                                       CUSTMENU.CBL
+* Options: LIST(CUSTMENU.LST) NOASMLIST
+     1*****************************************************************
+     2* THIS PROGRAM WILL DISPLAY CUSTOMER MENU                       *
+     3*****************************************************************
+     4 IDENTIFICATION DIVISION.
+     5 PROGRAM-ID. CUSTMENU.
+     6 AUTHOR. AGATHA BACANI IS INITIAL.
+     7 DATE-WRITTEN. 8 10 2018.
+     8*****************************************************************
+     9 ENVIRONMENT DIVISION.
+    10*****************************************************************
+    11 DATA DIVISION.
+    12 WORKING-STORAGE SECTION.
+    13 01  WS-SELECTED              PIC X VALUE SPACES.
+    14 01  EXIT-SW                  PIC X VALUE 'N'.
+    15 01  DUMMY                    PIC X VALUE SPACES.
+    16 01  ALPHA.
+    17     05 ALPHALOWER            PIC X(26)
+    18                              VALUE 'abcdefghijklmnopqrstuvwxyz'.
+    19     05 ALPHAUPPER            PIC X(26)
+    20                              VALUE 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+*   21 COPY 'ALPHA.CPY'.

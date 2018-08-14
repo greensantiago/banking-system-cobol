@@ -1,0 +1,3 @@
+COBOL %1;
+LINK %1;
+ANIMATE %1;
