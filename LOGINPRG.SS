@@ -46,17 +46,15 @@
           03 COL 76 HIGHLIGHT VALUE "|".
           03 LINE 15 COL 4 HIGHLIGHT VALUE "|".
           03 COL 76 HIGHLIGHT VALUE "|".
-          03 LINE 16 COL 4 HIGHLIGHT VALUE "+===========================
-      -"============================================+".
-          03 LINE 17 COL 4 HIGHLIGHT VALUE "|".
-          03 COL 76 HIGHLIGHT VALUE "|".
-          03 LINE 18 COL 4 HIGHLIGHT VALUE "|".
-          03 COL 76 HIGHLIGHT VALUE "|".
-          03 LINE 19 COL 4 HIGHLIGHT VALUE "|".
-          03 COL 76 HIGHLIGHT VALUE "|".
-          03 LINE 20 COL 4 HIGHLIGHT VALUE "+---------------------------
+          03 LINE 16 COL 4 HIGHLIGHT VALUE "+---------------------------
       -"--------------------------------------------+".
           03 LINE 11 COL 37 HIGHLIGHT PIC X(15) TO WS-USER-ID PROMPT
        REQUIRED SIZE 15.
+          03 LINE 12 COL 37 HIGHLIGHT PIC X(15) TO WS-USER-PASS PROMPT
+       REQUIRED NO-ECHO SIZE 15.
+       01 G-USER-ID.
+          03 LINE 11 COL 37 HIGHLIGHT PIC X(15) TO WS-USER-ID PROMPT
+       REQUIRED SIZE 15.
+       01 G-USER-PASS.
           03 LINE 12 COL 37 HIGHLIGHT PIC X(15) TO WS-USER-PASS PROMPT
        REQUIRED NO-ECHO SIZE 15.
